@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكفارات في الإسلام</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Lateef:wght@400;600;700&family=Ulamjad:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+        body {
+            font-family: 'Lateef', serif;
+            background: linear-gradient(135deg, #f8fafa 0%, #e8f4f0 50%, #d5e8dd 100%);
+            min-height: 100vh;
+            color: #0C1B17;
+        }
+
+        .main-title {
+            text-align: center;
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 3.5rem;
+            color: #0C1B17;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(12, 27, 23, 0.1);
+            position: relative;
+        }
+
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #38634D, #ECBC32, #38634D);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-family: 'Ulamjad', serif;
+            font-size: 1.4rem;
+            color: #38634D;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 3px solid #38634D;
+            border-radius: 25px;
+            text-align: center;
+            font-family: 'Lateef', serif;
+            margin: 0 auto 30px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(12, 27, 23, 0.1);
+            display: block;
+        }
+
+        .kaffara-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            max-width: 1500px;
+            margin: auto;
+            direction:rtl;
+        }
+
+        .kaffara-card {
+            background: #ffffff;
+            border: 3px solid #38634D;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(12, 27, 23, 0.1);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            transform: translateY(0);
+        }
+
+        .kaffara-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(12, 27, 23, 0.15);
+            border-color: #ECBC32;
+        }
+
+        .kaffara-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #38634D, #ECBC32, #38634D);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .kaffara-card:hover::before {
+            opacity: 1;
+        }
+
+        .kaffara-card::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ECBC32, #d4a72c);
+            border-radius: 50%;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+
+        .kaffara-card:hover::after {
+            opacity: 0.2;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kaffara-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .kaffara-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(12, 27, 23, 0.3), rgba(56, 99, 77, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .kaffara-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .kaffara-card-content {
+            padding: 30px;
+            position: relative;
+        }
+
+        .kaffara-title {
+            font-family: 'Aref Ruqaa', serif;
+            color: #0C1B17;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(12, 27, 23, 0.1);
+        }
+
+        .kaffara-desc {
+            font-family: 'Lateef', serif;
+            font-size: 1.2rem;
+            color: #38634D;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .kaffara-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: #0C1B17;
+            font-family: 'Lateef', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .kaffara-steps li {
+            padding: 10px 0;
+            position: relative;
+            padding-right: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .kaffara-steps li::before {
+            content: '◆';
+            color: #ECBC32;
+            position: absolute;
+            right: 0;
+            font-size: 1.3rem;
+            top: 8px;
+            text-shadow: 1px 1px 2px rgba(236, 188, 50, 0.3);
+        }
+
+        .kaffara-card:hover .kaffara-steps li {
+            color: #38634D;
+        }
+
+        .click-hint {
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Ulamjad', serif;
+            font-size: 1rem;
+            color: #ECBC32;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .kaffara-card:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 27, 23, 0.8);
+            backdrop-filter: blur(8px);
+                        direction:rtl;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 70px rgba(12, 27, 23, 0.3);
+            animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 4px solid #ECBC32;
+        }
+
+        @keyframes modalSlideIn {
+            from { 
+                transform: translateY(-100px) scale(0.8); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0) scale(1); 
+                opacity: 1; 
+            }
+        }
+
+        @keyframes modalSlideOut {
+            from { 
+                transform: translateY(0) scale(1); 
+                opacity: 1; 
+            }
+            to { 
+                transform: translateY(-100px) scale(0.8); 
+                opacity: 0; 
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #0C1B17, #38634D);
+            color: white;
+            padding: 40px;
+            border-radius: 25px 25px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(236, 188, 50, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-subtitle {
+            font-family: 'Ulamjad', serif;
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .close {
+            position: absolute;
+            top: 25px;
+            left: 35px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .close:hover {
+            color: #ECBC32;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafa 100%);
+        }
+
+        .modal-section {
+            margin-bottom: 35px;
+        }
+
+        .modal-section h3 {
+            font-family: 'Aref Ruqaa', serif;
+            color: #0C1B17;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ECBC32;
+            padding-bottom: 12px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .modal-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #38634D;
+        }
+
+        .modal-section p {
+            font-family: 'Lateef', serif;
+            line-height: 2;
+            color: #0C1B17;
+            margin-bottom: 18px;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .modal-steps {
+            background: linear-gradient(135deg, #f8fafa, #e8f4f0);
+            padding: 30px;
+            border-radius: 20px;
+            border-right: 6px solid #38634D;
+            box-shadow: 0 10px 25px rgba(12, 27, 23, 0.1);
+        }
+
+        .modal-steps ol {
+            padding-right: 25px;
+            font-family: 'Lateef', serif;
+        }
+
+        .modal-steps li {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #0C1B17;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .verse-box {
+            background: linear-gradient(135deg, #0C1B17, #38634D);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+            border: 4px solid #ECBC32;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verse-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(236, 188, 50, 0.1) 0%, transparent 70%);
+        }
+
+        .verse-text {
+            font-family: 'Ulamjad', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .verse-source {
+            font-family: 'Lateef', serif;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 3px solid #ECBC32;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '⚠️';
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            font-size: 2rem;
+            background: #ECBC32;
+            padding: 8px 12px;
+            border-radius: 50%;
+        }
+
+        .warning-box h4 {
+            font-family: 'Aref Ruqaa', serif;
+            color: #0C1B17;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .warning-box p {
+            font-family: 'Lateef', serif;
+            color: #0C1B17;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .kaffara-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+            
+            .modal-body {
+                padding: 30px 25px;
+            }
+            
+            .modal-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .kaffara-card-content {
+                padding: 25px;
+            }
+            
+            .kaffara-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-title">الكفارات في الإسلام</h1>
+    <p class="subtitle">تعرف على أنواع الكفارات وأحكامها الشرعية</p>
+    
+    <input type="text" class="search-input" placeholder="ابحث عن الكفارة...">
+
+    <div class="kaffara-container">
+        <div class="kaffara-card" data-kaffara="zihar">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=220&fit=crop" alt="كفارة الظهار">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة الظهار</h3>
+                <p class="kaffara-desc">تجب على من ظاهر من زوجته قبل المراجعة</p>
+                <ul class="kaffara-steps">
+                    <li>عتق رقبة مؤمنة</li>
+                    <li>صيام شهرين متتابعين</li>
+                    <li>إطعام ستين مسكيناً</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="qatl">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=220&fit=crop" alt="كفارة القتل الخطأ">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة القتل الخطأ</h3>
+                <p class="kaffara-desc">تجب على من قتل نفساً بغير قصد</p>
+                <ul class="kaffara-steps">
+                    <li>عتق رقبة مؤمنة</li>
+                    <li>صيام شهرين متتابعين</li>
+                    <li>دفع الدية كاملة</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="siam">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=220&fit=crop" alt="كفارة الصيام">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة إفطار رمضان</h3>
+                <p class="kaffara-desc">لمن أفطر في رمضان بجماع أو أكل متعمداً</p>
+                <ul class="kaffara-steps">
+                    <li>عتق رقبة مؤمنة</li>
+                    <li>صيام شهرين متتابعين</li>
+                    <li>إطعام ستين مسكيناً</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="yameen">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop" alt="كفارة اليمين">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة اليمين</h3>
+                <p class="kaffara-desc">لمن حلف يميناً ثم حنث فيه</p>
+                <ul class="kaffara-steps">
+                    <li>إطعام عشرة مساكين</li>
+                    <li>أو كسوتهم</li>
+                    <li>أو عتق رقبة</li>
+                    <li>أو صيام ثلاثة أيام</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="hajj">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=400&h=220&fit=crop" alt="كفارة الحج">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة الحج</h3>
+                <p class="kaffara-desc">لمن ارتكب محظوراً من محظورات الحج</p>
+                <ul class="kaffara-steps">
+                    <li>ذبح شاة في الحرم</li>
+                    <li>أو صيام ثلاثة أيام</li>
+                    <li>أو إطعام ستة مساكين</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="waqf">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?w=400&h=220&fit=crop" alt="كفارة الوقف">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة انتهاك الوقف</h3>
+                <p class="kaffara-desc">لمن انتهك حرمة الوقف أو تصرف فيه</p>
+                <ul class="kaffara-steps">
+                    <li>رد المال المأخوذ</li>
+                    <li>التوبة النصوح</li>
+                    <li>الصدقة بقدر المنفعة</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="nazr">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=400&h=220&fit=crop" alt="كفارة النذر">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة النذر</h3>
+                <p class="kaffara-desc">لمن نذر ثم عجز عن الوفاء بنذره</p>
+                <ul class="kaffara-steps">
+                    <li>كفارة يمين</li>
+                    <li>إطعام عشرة مساكين</li>
+                    <li>أو صيام ثلاثة أيام</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="qaza">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=220&fit=crop" alt="كفارة القذف">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">كفارة القذف</h3>
+                <p class="kaffara-desc">لمن قذف المحصنات ولم يأت بأربعة شهود</p>
+                <ul class="kaffara-steps">
+                    <li>جلد ثمانين جلدة</li>
+                    <li>عدم قبول الشهادة</li>
+                    <li>التوبة النصوح</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+
+        <div class="kaffara-card" data-kaffara="ridda">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=220&fit=crop" alt="كفارة الردة">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="kaffara-card-content">
+                <h3 class="kaffara-title">التوبة من الردة</h3>
+                <p class="kaffara-desc">لمن ارتد عن الإسلام ثم عاد إليه</p>
+                <ul class="kaffara-steps">
+                    <li>الشهادتان</li>
+                    <li>التوبة النصوح</li>
+                    <li>الإكثار من الأعمال الصالحة</li>
+                </ul>
+                <p class="click-hint">اضغط للمزيد من التفاصيل</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="kaffaraModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-subtitle" id="modalSubtitle"></p>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+<script>
+    const kaffaraData = {
+    zihar: {
+        title: "كفارة الظهار",
+        subtitle: "أحكام وتفاصيل كفارة الظهار",
+        definition: "الظهار هو أن يشبه الرجل زوجته بظهر أمه أو بأي امرأة محرمة عليه تحريماً مؤبداً، مثل أن يقول لها: 'أنت علي كظهر أمي'.",
+        verse: "والذين يظاهرون من نسائهم ثم يعودون لما قالوا فتحرير رقبة من قبل أن يتماسا",
+        verseSource: "سورة المجادلة - آية 3",
+        steps: [
+            "عتق رقبة مؤمنة سليمة من العيوب",
+            "فإن لم يجد فصيام شهرين متتابعين",
+            "فإن لم يستطع فإطعام ستين مسكيناً"
+        ],
+        conditions: "يجب أن يكون المظاهر مسلماً بالغاً عاقلاً، وأن تكون المرأة زوجة له حقيقة وقت الظهار.",
+        warning: "لا يحل للمظاهر أن يقرب زوجته حتى يؤدي الكفارة كاملة."
+    },
+    
+    qatl: {
+        title: "كفارة القتل الخطأ",
+        subtitle: "أحكام وتفاصيل كفارة القتل الخطأ",
+        definition: "القتل الخطأ هو أن يقتل الإنسان نفساً معصومة بغير قصد، كأن يرمي طائراً فيصيب إنساناً، أو يقود سيارة فيصدم شخصاً دون قصد.",
+        verse: "ومن قتل مؤمناً خطأً فتحرير رقبة مؤمنة ودية مسلمة إلى أهله",
+        verseSource: "سورة النساء - آية 92",
+        steps: [
+            "عتق رقبة مؤمنة سليمة من العيوب",
+            "فإن لم يجد فصيام شهرين متتابعين",
+            "دفع الدية كاملة إلى أهل المقتول"
+        ],
+        conditions: "يجب أن يكون القتل خطأً محضاً، وأن يكون المقتول معصوم الدم، وأن يثبت القتل بالبينة أو الإقرار.",
+        warning: "تجب الدية على العاقلة (قبيلة أو أهل القاتل) إذا كان القتل بآلة لا تقتل غالباً."
+    },
+    
+    siam: {
+        title: "كفارة إفطار رمضان",
+        subtitle: "أحكام وتفاصيل كفارة إفطار رمضان",
+        definition: "تجب الكفارة على من أفطر في رمضان بالجماع أو الأكل أو الشرب متعمداً بلا عذر شرعي.",
+        verse: "فمن لم يجد فصيام شهرين متتابعين من قبل أن يتماسا فمن لم يستطع فإطعام ستين مسكيناً",
+        verseSource: "سورة المجادلة - آية 4",
+        steps: [
+            "عتق رقبة مؤمنة سليمة من العيوب",
+            "فإن لم يجد فصيام شهرين متتابعين",
+            "فإن لم يستطع فإطعام ستين مسكيناً"
+        ],
+        conditions: "يجب أن يكون المفطر مسلماً بالغاً عاقلاً، وأن يكون الإفطار متعمداً بلا عذر شرعي.",
+        warning: "من أفطر بالجماع عليه كفارة واحدة عن اليوم الواحد، وإن كرر في أيام متعددة فعليه كفارة لكل يوم."
+    },
+    
+    yameen: {
+        title: "كفارة اليمين",
+        subtitle: "أحكام وتفاصيل كفارة اليمين",
+        definition: "تجب على من حلف يميناً بالله ثم حنث فيه أي خالف ما حلف عليه.",
+        verse: "فكفارته إطعام عشرة مساكين من أوسط ما تطعمون أهليكم أو كسوتهم أو تحرير رقبة",
+        verseSource: "سورة المائدة - آية 89",
+        steps: [
+            "إطعام عشرة مساكين من أوسط الطعام",
+            "أو كسوة عشرة مساكين",
+            "أو تحرير رقبة مؤمنة",
+            "فإن لم يستطع فصيام ثلاثة أيام"
+        ],
+        conditions: "يجب أن تكون اليمين بالله أو بصفة من صفاته، وأن يكون الحانث مسلماً بالغاً عاقلاً.",
+        warning: "لا تجب الكفارة في اليمين الغموس (الكاذبة) بل فيها التوبة والاستغفار."
+    },
+    
+    hajj: {
+        title: "كفارة الحج",
+        subtitle: "أحكام وتفاصيل كفارة محظورات الحج",
+        definition: "تجب على من ارتكب محظوراً من محظورات الحج أو العمرة مثل حلق الشعر أو تغطية الرأس أو لبس المخيط.",
+        verse: "فمن كان منكم مريضاً أو به أذى من رأسه ففدية من صيام أو صدقة أو نسك",
+        verseSource: "سورة البقرة - آية 196",
+        steps: [
+            "ذبح شاة في الحرم وتوزيعها على الفقراء",
+            "أو صيام ثلاثة أيام",
+            "أو إطعام ستة مساكين"
+        ],
+        conditions: "يجب أن يكون الفعل محظوراً في الحج أو العمرة، وأن يكون المحرم عالماً بالتحريم.",
+        warning: "بعض المحظورات لها أحكام خاصة مثل الجماع الذي يفسد الحج ويوجب الإتمام والقضاء."
+    },
+    
+    waqf: {
+        title: "كفارة انتهاك الوقف",
+        subtitle: "أحكام وتفاصيل كفارة انتهاك الوقف",
+        definition: "تجب على من انتهك حرمة الوقف أو تصرف فيه بما لا يحق له شرعاً.",
+        verse: "ومن بدله بعدما سمعه فإنما إثمه على الذين يبدلونه",
+        verseSource: "سورة البقرة - آية 181",
+        steps: [
+            "رد المال أو المنفعة المأخوذة من الوقف",
+            "التوبة النصوح والاستغفار",
+            "التصدق بمثل ما أخذ أو أكثر"
+        ],
+        conditions: "يجب أن يكون الوقف صحيحاً شرعاً، وأن يكون التصرف فيه مخالفاً لشرط الواقف.",
+        warning: "من تصرف في الوقف بحق لا إثم عليه، وإنما الإثم على من تعدى حدود الوقف."
+    },
+    
+    nazr: {
+        title: "كفارة النذر",
+        subtitle: "أحكام وتفاصيل كفارة النذر",
+        definition: "تجب على من نذر نذراً لله ثم لم يف به، أو نذر معصية فلم يفعلها.",
+        verse: "يوفون بالنذر ويخافون يوماً كان شره مستطيراً",
+        verseSource: "سورة الإنسان - آية 7",
+        steps: [
+            "إن كان النذر طاعة فيجب الوفاء به",
+            "إن كان معصية فلا يجوز الوفاء وعليه كفارة يمين",
+            "إطعام عشرة مساكين أو كسوتهم أو عتق رقبة أو صيام ثلاثة أيام"
+        ],
+        conditions: "يجب أن يكون النذر بصيغة صحيحة، وأن يكون الناذر مسلماً بالغاً عاقلاً.",
+        warning: "من نذر معصية فلا يجوز له الوفاء بها، وعليه كفارة يمين."
+    },
+    
+    qaza: {
+        title: "كفارة القذف",
+        subtitle: "أحكام وتفاصيل كفارة القذف",
+        definition: "تجب على من قذف المحصنات (اتهمهن بالزنا) ولم يأت بأربعة شهود عدول.",
+        verse: "والذين يرمون المحصنات ثم لم يأتوا بأربعة شهداء فاجلدوهم ثمانين جلدة",
+        verseSource: "سورة النور - آية 4",
+        steps: [
+            "إقامة حد الجلد ثمانين جلدة",
+            "عدم قبول شهادته مستقبلاً",
+            "التوبة النصوح والاستغفار"
+        ],
+        conditions: "يجب أن يكون المقذوف محصناً (عفيفاً)، وأن يكون القذف صريحاً، وألا يأتي القاذف بأربعة شهود.",
+        warning: "إذا تاب القاذف توبة نصوحاً تُقبل شهادته عند جمهور العلماء."
+    },
+    
+    ridda: {
+        title: "التوبة من الردة",
+        subtitle: "أحكام وتفاصيل التوبة من الردة",
+        definition: "تجب على من ارتد عن الإسلام بقول أو فعل أو اعتقاد ثم أراد العودة إلى الإسلام.",
+        verse: "إلا من تاب وآمن وعمل عملاً صالحاً فأولئك يدخلون الجنة",
+        verseSource: "سورة مريم - آية 60",
+        steps: [
+            "النطق بالشهادتين بصدق وإخلاص",
+            "التوبة النصوح من جميع الذنوب",
+            "الإكثار من الأعمال الصالحة",
+            "تجديد الإيمان والالتزام بأحكام الإسلام"
+        ],
+        conditions: "يجب أن تكون التوبة نصوحاً، وأن يعزم على عدم العودة إلى الكفر.",
+        warning: "الردة من أعظم الذنوب، والتوبة منها تحتاج إلى صدق وإخلاص تام."
+    }
+};
+
+// Search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-input');
+    const kaffaraCards = document.querySelectorAll('.kaffara-card');
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        
+        kaffaraCards.forEach(card => {
+            const title = card.querySelector('.kaffara-title').textContent.toLowerCase();
+            const desc = card.querySelector('.kaffara-desc').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
+// Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('kaffaraModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalBody = document.getElementById('modalBody');
+    const closeBtn = document.querySelector('.close');
+    const kaffaraCards = document.querySelectorAll('.kaffara-card');
+
+    // Open modal when card is clicked
+    kaffaraCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const kaffaraType = this.getAttribute('data-kaffara');
+            const data = kaffaraData[kaffaraType];
+            
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalSubtitle.textContent = data.subtitle;
+                
+                modalBody.innerHTML = `
+                    <div class="modal-section">
+                        <h3>التعريف</h3>
+                        <p>${data.definition}</p>
+                    </div>
+                    
+                    <div class="verse-box">
+                        <div class="verse-text">${data.verse}</div>
+                        <div class="verse-source">${data.verseSource}</div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>خطوات الكفارة</h3>
+                        <div class="modal-steps">
+                            <ol>
+                                ${data.steps.map(step => `<li>${step}</li>`).join('')}
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>الشروط</h3>
+                        <p>${data.conditions}</p>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>تنبيه مهم</h4>
+                        <p>${data.warning}</p>
+                    </div>
+                `;
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close modal when X is clicked
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>
+</body>
